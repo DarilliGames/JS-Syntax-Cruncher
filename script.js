@@ -12,7 +12,7 @@ function startTimer(){
         timeLeft--;
         $("#timeLeft").text("Time Remaining: " + timeLeft);
         if (timeLeft == 0){
-            clearInterval(timer);
+            enableSpeedMode();
             $("#score").text(score);
         }      
         
@@ -20,16 +20,27 @@ function startTimer(){
 }
 
 function enableSpeedMode(){
-    speedMode = true;
-    $("#textBack").text("Challenge Mode: " + speedMode);
-    startTimer();
+    speedMode = !speedMode;
+    if(speedMode){
+        $("#textBack").text("Challenge Mode: " + speedMode);
+        $("#timeLeft").text("Time Remaining: " + 60);
+        $("#newLoop").prop("disabled",true);
+        startTimer();
+        
+    }else{
+        clearInterval(timer);
+        $("#timeLeft").text('Click "Speed Mode" to go for a highscore!');
+        $("#newLoop").prop("disabled",false);
+    }
     newLoop();
+    
 }
 
 function newLoop(){
     startLocation = Math.floor(Math.random() * (50));
     endLocation = startLocation + Math.floor(Math.random() * (100));
     $("#textBack").text("");
+    $("#codeArea").val("");
     $("#instructions").text(`Loop through all the numbers between ${startLocation} and ${endLocation}`);
     
 }
