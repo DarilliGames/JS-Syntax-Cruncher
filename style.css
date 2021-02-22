@@ -1,0 +1,23 @@
+
+#codeArea{
+    resize: none;
+    width: 100%;
+    height: 200px;
+}
+button{
+    width: 100%;
+    height: 80px;
+}
+
+#tryButton{
+    background-color: green;
+}
+
+#speedButton{
+    background-color: red;
+}
+
+.split{
+    border-top: solid black 3px;
+    margin: 10px 0;
+}
