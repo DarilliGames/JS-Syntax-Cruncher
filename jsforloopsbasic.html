@@ -15,34 +15,42 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
         crossorigin="anonymous"></script>
+    <script src="scripts/jsForLoop1.js"></script>
+    
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h1>JavaScript</h1>
-            </div>
-            <div class="col-6">
-                <div class="col-12">
-                    <h3>Basic</h3>
-                </div>
-                <div class="col-12">
-                    <a class="btn btn-success" href="jsforloopsbasic.html" role="button">For Loops</a>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="col-12">
-                    <h3>Advanced</h3>
-                </div>
-                <div class="col-12">
-                    <a class="btn btn-danger" href="jsforloopsadvanced.html" role="button">For Loops</a>
-                </div>
+            <div class="col-4">
+                <a class="btn btn-primary" href="/" role="button">Back</a>
             </div>
         </div>
-    </div>
-
-
+        <div class="row">
+            <div class="col-6">
+                <textarea id="codeArea"></textarea>
+                <button id="tryButton" onclick="getTextArea()">Try</button>
+            </div>
+            <div class="col-6">
+                <h2>Here are your instructions</h2>
+                <p id="instructions"></p>
+                <p id="textBack"></p>
+                <p id="timeLeft">Click "Speed Mode" to go for a highscore!</p>
+                <p>Score: <span id="score">0</span></p>
+                <p>High Score: <span id="highScore">0</span></p>
+            </div>
+            <div class="col-12 split"></div>
+            <div class="col-6 col-md-3 offset-md-3">
+                <button id="newLoop" onclick="newChallenge()">New Challenge</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <button id="speedButton" onclick="enableSpeedMode()">Speed Mode</button>
+            </div>
+        </div>
+        
+        
+        
+        <script src="scripts/script.js"></script>
 </body>
 
 </html>

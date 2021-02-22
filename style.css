@@ -1,4 +1,10 @@
+/* Index Styling */
 
+.btn{
+    width: 100%;
+}
+
+/* Challenge HTML Styling */
 #codeArea{
     resize: none;
     width: 100%;

@@ -1,42 +1,7 @@
 let startLocation;
 let endLocation;
-let speedMode = false;
-let score = 0;
-let timeLeft;
-let timer;
 
-function startTimer(){
-    timeLeft = 60;
-    clearInterval(timer);
-    timer = setInterval(function () {
-        timeLeft--;
-        $("#timeLeft").text("Time Remaining: " + timeLeft);
-        if (timeLeft == 0){
-            enableSpeedMode();
-            $("#score").text(score);
-        }      
-        
-    }, 1000);
-}
-
-function enableSpeedMode(){
-    speedMode = !speedMode;
-    if(speedMode){
-        $("#textBack").text("Challenge Mode: " + speedMode);
-        $("#timeLeft").text("Time Remaining: " + 60);
-        $("#newLoop").prop("disabled",true);
-        startTimer();
-        
-    }else{
-        clearInterval(timer);
-        $("#timeLeft").text('Click "Speed Mode" to go for a highscore!');
-        $("#newLoop").prop("disabled",false);
-    }
-    newLoop();
-    
-}
-
-function newLoop(){
+function newChallenge(){
     startLocation = Math.floor(Math.random() * (50));
     endLocation = startLocation + Math.floor(Math.random() * (100));
     $("#textBack").text("");
@@ -46,7 +11,6 @@ function newLoop(){
 }
 
 function getTextArea(){
-    
     let codeIn = $("#codeArea").val().replaceAll(" ", "").split("\n");
     codeIn = codeIn.filter(item => item !== "");
     let returnText = "";
@@ -62,7 +26,8 @@ function getTextArea(){
                     returnText = ("Well Done");
                     if(speedMode && timeLeft > 0){
                         score++;
-                        newLoop();
+                        $("#score").text(score);
+                        newChallenge();
                         $("#codeArea").val("");
 
                     }
@@ -79,9 +44,7 @@ function getTextArea(){
     }else{
         returnText = ("The check the start of your loop.")
     }
-    console.log(returnText);
+    
     $("#textBack").text(returnText) 
 
 }
-
-newLoop();
