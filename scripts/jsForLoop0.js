@@ -15,10 +15,14 @@ function newChallenge() {
 function selectAnswer(selected) {
     if (correct == selected) {
         $("#textBack").text("You did it!");
+        if (speedMode && timeLeft > 0) {
+            score++;
+            $("#score").text(score);
+            newChallenge();
+        }
     }
     else {
 
-        console.log(options);
         for (let i = 0; i < options[selected].length; i++) {
             console.log(`#option${selected} .${options[selected][i]}`);
             $(`#option${selected} .${options[selected][i]}`).addClass("incorrect");
@@ -48,6 +52,10 @@ function selectAnswer(selected) {
                 break;
         }
         
+        if (speedMode && timeLeft > 0) {
+            score = score-3;
+            $("#score").text(score);
+        }
 
     }
 
