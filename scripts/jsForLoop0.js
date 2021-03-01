@@ -1,80 +1,91 @@
-// Applying new RoadMap for future development
-// Code in this page can be ignored until further notice
-
 let startLocation;
 let endLocation;
+let correct;
+let options;
 
-function newChallenge(){
-    startLocation = Math.floor(Math.random() * (50));
+function newChallenge() {
+    startLocation = Math.floor(Math.random() * (2));
     endLocation = startLocation + Math.floor(Math.random() * (100));
+    correct = Math.floor((Math.random() * 4) + 1);
     $("#textBack").text("");
-    $("#codeArea").val("");
-    $("#instructions").text(`Loop through all the numbers between ${startLocation} and ${endLocation}`);
-    
+    $("#instructions").text(`Which For Loop will loop from ${startLocation} to ${endLocation}?`);
+    generateQuestion();
 }
 
-function checkStartLoop(codeIn){
-    if(codeIn[0][0] == `for(leti=${startLocation}`){
-        console.log("a")
-        return true;
+function selectAnswer(selected) {
+    if (correct == selected) {
+        console.log("Wow!");
     }
-}
-function checkMiddleLoop(codeIn){
-    if(codeIn[0][1]==`i<${endLocation+1}` || codeIn[0][1]==`i<=${endLocation}`){
-        return true;
+    else {
+        console.log("Oops!");
+
     }
-}
-function checkEndLoop(codeIn){
-    if(codeIn[0][2] == "i++){"){
-        return true;
-    }
-}
-function checkLoopClosed(){
-    if(codeIn[codeIn.length-1]=="}"){
-        return true;
-    }
+
 }
 
-function getTextArea(){
-    let codeIn = $("#codeArea").val().replaceAll(" ", "").split("\n");
-    codeIn = codeIn.filter(item => item !== "");
-    let returnText = "Hello";
-    if(typeof(codeIn[0])=="undefined"){
-        $("#textBack").text("Start typing your for loop!");
-        return;
+function incorrectGenerator() {
+    let boption = Math.floor((Math.random() * 10));
+    let xA = "for(let i = ";
+    let xB = "; i < ";
+    let xC = "; i++";
+    let xD = "){";
+    xLocation = startLocation;
+    yLocation = endLocation;
+    switch (boption) {
+        case boption=0:
+            xLocation = xLocation-1;
+            break;
+        case boption=1:
+            xLocation = xLocation+1;
+            break;
+        case boption=2:
+            yLocation = yLocation-1;
+            break;
+        case boption=3:
+            xD = ");";
+            break;
+        case boption = 4:
+            xD = "){;";
+            break;
+        case boption = 5:
+            xA = "for "
+            break;
+        case boption = 6:
+            xA = "for(let i == ";
+            break;
+        case boption = 7:
+            xB = ", i < ";
+            xC = ", i++";
+            break;
+        case boption = 8:
+            xC = "; i+";
+            break;
+        case boption = 9:
+            xC = "; i";
+            break;
+        default:
+            xc="";
     }
-    codeIn[0] = codeIn[0].split(";");
+    let badAnswer = `${xA}${xLocation}${xB} ${yLocation+1} ${xC}${xD}`;
+    return badAnswer;
+}
 
-    // Check the start of the loop
-    if(!checkStartLoop(codeIn)){
-        $("#textBack").text("Check the start of your loop.");
-        return;
-    }
-    // checks where loop ends
-    if(!checkMiddleLoop(codeIn)){
-        $("#textBack").text("When are you stopping the loop?");
-        return;
-    }
-    // checks increment/decrement
-    if(!checkEndLoop(codeIn)){
-        $("#textBack").text("How are you counting through the indexes?");
-        return;
-    }
-    // was the loop closed?
-    if(!checkLoopClosed(codeIn)){
-        $("#textBack").text("Have you close the loop with a '}' on a new line?");
-        return;
-    }
-    // If correct
-    $("#textBack").text("Well Done");
-
-    // Increase score and increment should it pass the tests.
-    if(speedMode && timeLeft > 0){
-        score++;
-        $("#score").text(score);
-        newChallenge();
-        $("#codeArea").val("");
+function generateQuestion() {
+    console.log("Hello");
+    options = [];
+    let xA = "for(let i = ";
+    let xB = "; i < ";
+    let xC = "; i++"
+    let xD = "){";
+    let format;
+    for (let i = 1; i < 5; i++) {
+        console.log(i, correct);
+        if(i == correct){
+            format = `${xA}${startLocation}${xB} ${endLocation+1}${xC}${xD}`;
+        }else{
+            format = incorrectGenerator();
+        }
+        $("#option" + i).text(format);
 
     }
-
 }

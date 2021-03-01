@@ -2,6 +2,7 @@
 
 .btn{
     width: 100%;
+    margin-bottom: 5px;
 }
 
 /* Challenge HTML Styling */
@@ -26,4 +27,12 @@ button{
 .split{
     border-top: solid black 3px;
     margin: 10px 0;
+}
+.pBox{
+    background-color: lightgrey;
+    border: solid black 1px;
+    width: 100%;
+}
+.pBox p{
+    margin: 0px;
 }
