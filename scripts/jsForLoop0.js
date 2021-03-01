@@ -14,10 +14,40 @@ function newChallenge() {
 
 function selectAnswer(selected) {
     if (correct == selected) {
-        console.log("Wow!");
+        $("#textBack").text("You did it!");
     }
     else {
-        console.log("Oops!");
+
+        console.log(options);
+        for (let i = 0; i < options[selected].length; i++) {
+            console.log(`#option${selected} .${options[selected][i]}`);
+            $(`#option${selected} .${options[selected][i]}`).addClass("incorrect");
+        }
+        let whatsWrong = options[selected]
+        switch (whatsWrong) {
+            case whatsWrong = "a":
+                $("#textBack").text("The initial starting point was not definded correctly");
+                break;
+            case whatsWrong = "b":
+                $("#textBack").text("The number the loop begins with is incorrect");
+                break;
+            case whatsWrong = "c":
+                $("#textBack").text("Error selecting where to top");
+                break;
+            case whatsWrong = "d":
+                $("#textBack").text("The last number the loop stops on is incorrect");
+                break;
+            case whatsWrong = "e":
+                $("#textBack").text("How the loop increments/decrements was incorrect");
+                break;
+            case whatsWrong = "f":
+                $("#textBack").text("The statement was not closed correctly");
+                break;
+            case whatsWrong = "ce":
+                $("#textBack").text("The Commas should be semi-colons ';'");
+                break;
+        }
+        
 
     }
 
@@ -29,63 +59,77 @@ function incorrectGenerator() {
     let xB = "; i < ";
     let xC = "; i++";
     let xD = "){";
+    let back;
     xLocation = startLocation;
     yLocation = endLocation;
     switch (boption) {
-        case boption=0:
-            xLocation = xLocation-1;
+        case boption = 0:
+            xLocation = xLocation - 1;
+            back = "b";
             break;
-        case boption=1:
-            xLocation = xLocation+1;
+        case boption = 1:
+            xLocation = xLocation + 1;
+            back = "b";
             break;
-        case boption=2:
-            yLocation = yLocation-1;
+        case boption = 2:
+            yLocation = yLocation - 1;
+            back = "d";
             break;
-        case boption=3:
+        case boption = 3:
             xD = ");";
+            back = "f";
             break;
         case boption = 4:
             xD = "){;";
+            back = "f";
             break;
         case boption = 5:
-            xA = "for "
+            xA = "for ";
+            back = "a";
             break;
         case boption = 6:
             xA = "for(let i == ";
+            back = "a";
             break;
         case boption = 7:
             xB = ", i < ";
             xC = ", i++";
+            back = "ce";
             break;
         case boption = 8:
             xC = "; i+";
+            back = "e";
             break;
         case boption = 9:
             xC = "; i";
+            back = "e";
             break;
-        default:
-            xc="";
+
     }
-    let badAnswer = `${xA}${xLocation}${xB} ${yLocation+1} ${xC}${xD}`;
-    return badAnswer;
+    let badAnswer = `<span class="a">${xA}</span><span class="b">${xLocation}</span><span class="c">${xB}</span> <span class="d">${yLocation + 1}</span> <span class="e">${xC}</span><span class="f">${xD}</span>`;
+    return [badAnswer, back];
 }
 
 function generateQuestion() {
     console.log("Hello");
-    options = [];
+    options = {};
     let xA = "for(let i = ";
     let xB = "; i < ";
     let xC = "; i++"
     let xD = "){";
     let format;
+
     for (let i = 1; i < 5; i++) {
         console.log(i, correct);
-        if(i == correct){
-            format = `${xA}${startLocation}${xB} ${endLocation+1}${xC}${xD}`;
-        }else{
-            format = incorrectGenerator();
+        if (i == correct) {
+            format = `${xA}${startLocation}${xB} ${endLocation + 1}${xC}${xD}`;
+        } else {
+            let incorrect = incorrectGenerator();
+            format = incorrect[0];
+            options[i] = incorrect[1];
         }
-        $("#option" + i).text(format);
+        $("#option" + i).html(format);
 
     }
+    console.log(options);
 }

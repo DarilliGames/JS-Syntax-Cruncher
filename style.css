@@ -36,3 +36,6 @@ button{
 .pBox p{
     margin: 0px;
 }
+.incorrect{
+    background-color: red;
+}
