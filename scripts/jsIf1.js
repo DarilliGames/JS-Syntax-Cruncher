@@ -7,7 +7,7 @@ function newChallenge() {
     let logicGen = Math.floor(Math.random() * 5)
     startLocation = Math.floor(Math.random() * (50));
     endLocation = startLocation + Math.floor(Math.random() * (100));
-    console.log(logicGen);
+    
     switch (logicGen) {
         case logicGen=1:
             logical = "is greater than";

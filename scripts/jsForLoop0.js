@@ -24,7 +24,6 @@ function selectAnswer(selected) {
     else {
 
         for (let i = 0; i < options[selected].length; i++) {
-            console.log(`#option${selected} .${options[selected][i]}`);
             $(`#option${selected} .${options[selected][i]}`).addClass("incorrect");
         }
         let whatsWrong = options[selected]
@@ -119,7 +118,7 @@ function incorrectGenerator() {
 }
 
 function generateQuestion() {
-    console.log("Hello");
+    
     options = {};
     let xA = "for(let i = ";
     let xB = "; i < ";
@@ -128,7 +127,7 @@ function generateQuestion() {
     let format;
 
     for (let i = 1; i < 5; i++) {
-        console.log(i, correct);
+        
         if (i == correct) {
             format = `${xA}${startLocation}${xB} ${endLocation + 1}${xC}${xD}`;
         } else {
@@ -139,5 +138,5 @@ function generateQuestion() {
         $("#option" + i).html(format);
 
     }
-    console.log(options);
+
 }
