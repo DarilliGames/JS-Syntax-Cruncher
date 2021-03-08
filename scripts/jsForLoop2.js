@@ -2,6 +2,7 @@ let startLocation;
 let endLocation;
 let direction;
 let movement;
+let challenge = "jsForLoop2";
 
 function newChallenge() {
     direction = Math.round(Math.random())

@@ -43,17 +43,42 @@ button{
 .medal{
     width: 20px;
     height: 20px;
+    display: inline;
+    float: right;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 .no-medal{
-    background-color: white;
+    background: url("images/no-medal.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .bronze{
-    background-color: brown;
+    background: url("images/bronze.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 .silver{
-    background-color: silver;
+    background: url("images/silver.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 .gold{
-    background-attachment: gold;
+    background: url("images/gold.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.diamond{
+    background: url("images/diamond.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }

@@ -1,6 +1,6 @@
 let objArray = [
     {
-        "name": "fruit", 
+        "name": "fruit",
         "arr": [
             "apple",
             "banana",
@@ -10,7 +10,7 @@ let objArray = [
         ]
     },
     {
-        "name": "jedi", 
+        "name": "jedi",
         "arr": [
             "Luke",
             "Yoda",
@@ -20,7 +20,7 @@ let objArray = [
         ]
     },
     {
-        "name": "hobbit", 
+        "name": "hobbit",
         "arr": [
             "Frodo",
             "Sam",
@@ -30,7 +30,7 @@ let objArray = [
         ]
     },
     {
-        "name": "pokemon", 
+        "name": "pokemon",
         "arr": [
             "Bulbasaur",
             "Charmander",
@@ -40,7 +40,7 @@ let objArray = [
         ]
     },
     {
-        "name": "languange", 
+        "name": "languange",
         "arr": [
             "HTML",
             "CSS",
@@ -50,7 +50,7 @@ let objArray = [
         ]
     },
     {
-        "name": "editor", 
+        "name": "editor",
         "arr": [
             "GitPod",
             "VS Code",
@@ -67,9 +67,9 @@ let varIndex;
 
 function newChallenge() {
     let ai = Math.floor(Math.random() * Math.floor(objArray.length));
-    varIndex = Math.floor(Math.random() * Math.floor(5));
+    varIndex = Math.floor(Math.random() * Math.floor(objArray[ai].length));
     varName = objArray[ai]["name"];
-    
+
     $("#textBack").text("");
     $("#codeArea").val("");
     $("#instructions").text(`Given the array of ${varName}s, set the variable ${varName} to ${objArray[ai]["arr"][varIndex]}.`);
@@ -85,36 +85,42 @@ function getTextArea() {
         $("#textBack").text("Start typing your if statement!");
         return;
     }
-    if(codeIn[0].substring(0,3)!="let"){
+    if (codeIn[0].substring(0, 3) != "let") {
         $("#textBack").text("Have you started to define the variable with let");
         return;
     }
-    if(codeIn[0].substring(3,3+varName.length)!=(varName)){
-        console.log(codeIn[0].substring(3,3+varName.length));
-        console.log("let"+varName);
-        
+    if (codeIn[0].substring(3, 3 + varName.length) != (varName)) {
+        console.log(codeIn[0].substring(3, 3 + varName.length));
+        console.log("let" + varName);
+
         $("#textBack").text(`You need to define the variable with the name ${varName}`);
         return;
     }
     console.log($("#codeArea").val());
-    if($("#codeArea").val().substring(0,4+varName.length) != `let ${varName}`){
+    if ($("#codeArea").val().substring(0, 4 + varName.length) != `let ${varName}`) {
         $("#textBack").text(`Did you forget the space between let and ${varName}`);
         return;
     }
-    if(codeIn[0].substring(3+varName.length, 4+varName.length)!=("=")){
+    if (codeIn[0].substring(3 + varName.length, 4 + varName.length) != ("=")) {
         $("#textBack").text(`You need to define the variable with the name ${varName}`);
         return;
-    } 
-    if(codeIn[0].substring(3+varName.length, 5+varName.length)==("==")){
+    }
+    if (codeIn[0].substring(3 + varName.length, 5 + varName.length) == ("==")) {
         $("#textBack").text(`= is used to set a variable.  == is used to compare variables.`);
         return;
     }
-    if(codeIn[0] != `let${varName}=${varName}s[${varIndex}];`){
+    if (codeIn[0] != `let${varName}=${varName}s[${varIndex}];`) {
         $("#textBack").text(`= is used to set a variable.  == is used to compare variables.`);
         return;
     }
 
-    
+    if (speedMode && timeLeft > 0) {
+        score++;
+        $("#score").text(score);
+        newChallenge();
+        $("#codeArea").val("");
+
+    }
 
     $("#textBack").text(`So Far So good!`);
 

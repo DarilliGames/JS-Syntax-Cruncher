@@ -2,6 +2,7 @@ let startLocation;
 let endLocation;
 let correct;
 let options;
+let challenge = "jsForLoop0";
 
 function newChallenge() {
     startLocation = Math.floor(Math.random() * (2));
@@ -113,7 +114,7 @@ function incorrectGenerator() {
             break;
 
     }
-    let badAnswer = `<span class="a">${xA}</span><span class="b">${xLocation}</span><span class="c">${xB}</span> <span class="d">${yLocation + 1}</span> <span class="e">${xC}</span><span class="f">${xD}</span>`;
+    let badAnswer = `<span class="a">${xA}</span><span class="b">${xLocation}</span><span class="c">${xB}</span><span class="d">${yLocation + 1}</span><span class="e">${xC}</span><span class="f">${xD}</span>`;
     return [badAnswer, back];
 }
 

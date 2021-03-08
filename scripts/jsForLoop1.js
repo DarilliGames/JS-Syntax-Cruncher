@@ -1,5 +1,6 @@
 let startLocation;
 let endLocation;
+let challenge = "jsForLoop1";
 
 function newChallenge(){
     startLocation = Math.floor(Math.random() * (50));

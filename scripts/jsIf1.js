@@ -2,6 +2,7 @@ let startLocation;
 let endLocation;
 let logical;
 let operator;
+let challenge = "jsIf1";
 
 function newChallenge() {
     let logicGen = Math.floor(Math.random() * 5)
