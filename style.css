@@ -39,3 +39,21 @@ button{
 .incorrect{
     background-color: red;
 }
+
+.medal{
+    width: 20px;
+    height: 20px;
+}
+.no-medal{
+    background-color: white;
+}
+
+.bronze{
+    background-color: brown;
+}
+.silver{
+    background-color: silver;
+}
+.gold{
+    background-attachment: gold;
+}
