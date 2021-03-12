@@ -40,7 +40,7 @@ let objArray = [
         ]
     },
     {
-        "name": "languange",
+        "name": "language",
         "arr": [
             "HTML",
             "CSS",
@@ -64,6 +64,7 @@ let objArray = [
 
 let varName = "";
 let varIndex;
+let challenge = "jsArray1";
 
 function newChallenge() {
     let ai = Math.floor(Math.random() * Math.floor(objArray.length));

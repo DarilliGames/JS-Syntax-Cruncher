@@ -71,3 +71,5 @@ function getTextArea() {
     $("#textBack").text(returnText)
 
 }
+
+

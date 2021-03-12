@@ -82,3 +82,14 @@ button{
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+.matrix{
+    color: green;
+}
+#code-row{
+    background-color: black;
+}
+
+.pad-tb-20{
+    padding: 20px 5px;
+}

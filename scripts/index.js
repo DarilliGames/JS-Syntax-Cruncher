@@ -1,8 +1,15 @@
 let requirements = {
+    // Loops
     "jsForLoop0": [2, 4, 6, 8],
     "jsForLoop1": [1, 2, 3, 4],
     "jsForLoop2": [1, 2, 3, 4],
-    "if1": [1, 2, 3, 4]
+    // Array Notation
+    "jsArray0": [1, 2, 3, 4],
+    "jsArray1": [1, 2, 3, 4],
+    "jsArray2": [1, 2, 3, 4],
+    
+    // if
+    "if1": [1, 2, 3, 4],
 };
 
 
@@ -39,3 +46,18 @@ $('.medal').each(function () {
     $(this).addClass(medalClass);
 
 });
+
+
+// setInterval(function () {
+//     let string = "";
+//     for (let i = 0; i < 8; i++) {
+//         if (i % 4 == 0) {
+//             string += " ";
+//         }
+//         string += (Math.floor(Math.random() * Math.floor(2)).toString());
+//     }
+    
+//     $("#code-row").find(':first-child').remove();
+//     $("#code-row").append(`<div class='col-1 matrix'>${string}</div>`)
+//     console.log(string);
+// }, 250);
