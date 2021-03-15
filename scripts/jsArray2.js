@@ -64,12 +64,14 @@ let objArray = [
 
 let varName = "";
 let varIndex;
-let challenge = "jsArray1";
+let challenge = "jsArray2";
 let ai;
 let fullArray = "[";
 for (let i=0; i<objArray.length;i++){
-    fullArray =+ [objArray[i]["arr"].join(", ")];
+    fullArray = fullArray + `<br>[${objArray[i]["arr"].join(", ")}],`;
 }
+fullArray = fullArray.slice(0,-1) + "<br>]";
+
 console.log(fullArray);
 
 function newChallenge() {
@@ -80,8 +82,8 @@ function newChallenge() {
 
     $("#textBack").text("");
     $("#codeArea").val("");
-    $("#instructions").text(`Given the nested array of objArray ${varName}s, set the variable ${varName} to ${objArray[ai]["arr"][varIndex]}.`);
-    $("#array").text(`${varName}s = [${objArray[ai]["arr"].join(", ")}];`);
+    $("#instructions").text(`Given the nested array of objArray, set the variable ${varName} to ${objArray[ai]["arr"][varIndex]}.`);
+    $("#array").html(`objArray = ${fullArray};`);
 
 }
 
@@ -122,21 +124,26 @@ function getTextArea() {
         $("#textBack").text(`You have forgotten to take the objArray into account.  You need to access ${varName} before ${varName[varIndex]}.`);
         return;
     }
-    console.log(codeIn[0].substring(13+varName.length));
-    if (codeIn[0].substring(4 + varName.length, 13+varName.length) != "objArray") {
-        $("#textBack").text(`You need get the outter array - objArray before accessing the inner array.`);
-        return;
-    }
-    if (codeIn[0].substring(13+varName.length + 16+varName.length) != `[${ai}]`) {
-        $("#textBack").text(`You need get the outter array - objArray before accessing the inner array.`);
-        return;
-    }
 
-    if (codeIn[0] != `let${varName}=objArray[${ai}][${varIndex}];`) {
+    if (codeIn[0].substring(4 + varName.length, 12+varName.length) != "objArray") {
+        $("#textBack").text(`You need get the outter array - objArray before accessing the inner array.`);
+        return;
+    }
+ 
+    if (codeIn[0].substring(12 + varName.length, 15+varName.length) != `[${ai}]`) {
+        $("#textBack").text(`You need access the outter array -`);
+        return;
+    }
+    
+    if (codeIn[0].substring(15 + varName.length, 18+varName.length) !=  `[${varIndex}]`) {
         $("#textBack").text(`You have accessed the outter array.  Now you need to access the inner array.`);
         return;
     }
-
+    console.log(codeIn[0].substring(18+varName.length, 18+varName.length+1));
+    if (codeIn[0].substring(18+varName.length, 18+varName.length+1) !=  `;`) {
+        $("#textBack").text(`Did you remember to close the statement with a ";"`);
+        return;
+    }
     if (speedMode && timeLeft > 0) {
         score++;
         $("#score").text(score);
