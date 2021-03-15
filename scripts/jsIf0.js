@@ -9,7 +9,7 @@ let listOfOperators = ["<","<=", ">", ">=", "=="]
 let spanLetters = "abcdefghijklmnop"
 let correct;
 let options;
-let challenge = "CHALLENGE NAME HERE";
+let challenge = "jsIf0";
 
 
 function newChallenge() {

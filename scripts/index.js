@@ -1,15 +1,17 @@
 let requirements = {
     // Loops
-    "jsForLoop0": [2, 4, 6, 8],
+    "jsForLoop0": [2, 4, 6, 10],
     "jsForLoop1": [1, 2, 3, 4],
     "jsForLoop2": [1, 2, 3, 4],
     // Array Notation
-    "jsArray0": [1, 2, 3, 4],
+    "jsArray0": [2, 4, 6, 10],
     "jsArray1": [1, 2, 3, 4],
     "jsArray2": [1, 2, 3, 4],
     
     // if
-    "if1": [1, 2, 3, 4],
+    "jsIf0": [2, 4, 6, 10],
+    "jsIf1": [1, 2, 3, 4],
+    "jsIf2": [1, 2, 3, 4],
 };
 
 
