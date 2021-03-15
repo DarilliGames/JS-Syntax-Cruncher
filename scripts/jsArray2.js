@@ -65,15 +65,22 @@ let objArray = [
 let varName = "";
 let varIndex;
 let challenge = "jsArray1";
+let ai;
+let fullArray = "[";
+for (let i=0; i<objArray.length;i++){
+    fullArray =+ [objArray[i]["arr"].join(", ")];
+}
+console.log(fullArray);
 
 function newChallenge() {
-    let ai = Math.floor(Math.random() * Math.floor(objArray.length));
+    ai = Math.floor(Math.random() * Math.floor(objArray.length));
     varIndex = Math.floor(Math.random() * Math.floor(objArray[ai]["arr"].length));
     varName = objArray[ai]["name"];
+    
 
     $("#textBack").text("");
     $("#codeArea").val("");
-    $("#instructions").text(`Given the array of ${varName}s, set the variable ${varName} to ${objArray[ai]["arr"][varIndex]}.`);
+    $("#instructions").text(`Given the nested array of objArray ${varName}s, set the variable ${varName} to ${objArray[ai]["arr"][varIndex]}.`);
     $("#array").text(`${varName}s = [${objArray[ai]["arr"].join(", ")}];`);
 
 }
@@ -97,6 +104,7 @@ function getTextArea() {
         $("#textBack").text(`You need to define the variable with the name ${varName}`);
         return;
     }
+
     console.log($("#codeArea").val());
     if ($("#codeArea").val().substring(0, 4 + varName.length) != `let ${varName}`) {
         $("#textBack").text(`Did you forget the space between let and ${varName}`);
@@ -110,8 +118,22 @@ function getTextArea() {
         $("#textBack").text(`= is used to set a variable.  == is used to compare variables.`);
         return;
     }
-    if (codeIn[0] != `let${varName}=${varName}s[${varIndex}];`) {
-        $("#textBack").text(`= is used to set a variable.  == is used to compare variables.`);
+    if (codeIn[0] == `let${varName}=${varName}s[${varIndex}];`) {
+        $("#textBack").text(`You have forgotten to take the objArray into account.  You need to access ${varName} before ${varName[varIndex]}.`);
+        return;
+    }
+    console.log(codeIn[0].substring(13+varName.length));
+    if (codeIn[0].substring(4 + varName.length, 13+varName.length) != "objArray") {
+        $("#textBack").text(`You need get the outter array - objArray before accessing the inner array.`);
+        return;
+    }
+    if (codeIn[0].substring(13+varName.length + 16+varName.length) != `[${ai}]`) {
+        $("#textBack").text(`You need get the outter array - objArray before accessing the inner array.`);
+        return;
+    }
+
+    if (codeIn[0] != `let${varName}=objArray[${ai}][${varIndex}];`) {
+        $("#textBack").text(`You have accessed the outter array.  Now you need to access the inner array.`);
         return;
     }
 
@@ -123,6 +145,6 @@ function getTextArea() {
 
     }
 
-    $("#textBack").text(`Well Done!`);
+    $("#textBack").text(`So Far So good!`);
 
 }
