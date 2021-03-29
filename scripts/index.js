@@ -1,4 +1,8 @@
 let requirements = {
+    // L/O's
+    "jsLO0": [2, 4, 6, 10],
+    "jsLO1": [1, 2, 3, 4],
+    "jsLO": [1, 2, 3, 4],
     // Loops
     "jsForLoop0": [2, 4, 6, 10],
     "jsForLoop1": [1, 2, 3, 4],

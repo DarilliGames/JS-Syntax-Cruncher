@@ -3,7 +3,7 @@ let startLocation;
 let endLocation;
 let logical;
 let operator;
-let listOfOperators = ["<","<=", ">", ">=", "=="]
+let listOfOperators = ["<","<=", ">", ">=", "=="];
 
 // Always Needed
 let spanLetters = "abcdefghijklmnop"
