@@ -93,3 +93,6 @@ button{
 .pad-tb-20{
     padding: 20px 5px;
 }
+tab{
+    padding-left: 16px;
+}

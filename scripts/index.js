@@ -16,6 +16,11 @@ let requirements = {
     "jsIf0": [2, 4, 6, 10],
     "jsIf1": [1, 2, 3, 4],
     "jsIf2": [1, 2, 3, 4],
+
+    // def func
+    "jsDefFunc0": [2, 4, 6, 10],
+    "jsDefFunc1": [1, 2, 3, 4],
+    "jsDefFunc2": [1, 2, 3, 4],
 };
 
 
