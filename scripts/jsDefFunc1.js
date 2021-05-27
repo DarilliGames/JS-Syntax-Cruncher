@@ -21,8 +21,8 @@ function newChallenge() {
     // Clear the feedback given to the student
     $("#textBack").text("");
     $("#codeArea").val(infoText + "\n");
-    $("#instructions").text(`Define a function called ${operation[0]}.  Within the function it should
-    set the variable ${operation[1][0]} equal to ${operation[1][1]}`);
+    $("#instructions").html(`Define a function called <b>${operation[0]}</b>.  Within the function it should
+    set the variable <b>${operation[1][0]}</b> equal to <b>${operation[1][1]}</b>.<br>There may be required variables pre-defined, leave them in place.`);
 
 }
 
