@@ -59,16 +59,3 @@ $('.medal').each(function () {
 });
 
 
-setInterval(function () {
-    let string = "";
-    for (let i = 0; i < 8; i++) {
-        if (i % 4 == 0) {
-            string += " ";
-        }
-        string += (Math.floor(Math.random() * Math.floor(2)).toString());
-    }
-    
-    $("#code-row").find(':first-child').remove();
-    $("#code-row").append(`<div class='col-1 matrix'>${string}</div>`)
-    console.log(string);
-}, 150);
